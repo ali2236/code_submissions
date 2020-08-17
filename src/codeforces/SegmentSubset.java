@@ -1,9 +1,6 @@
 package codeforces;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class SegmentSubset {
 
@@ -13,14 +10,12 @@ public class SegmentSubset {
         while (t-- > 0) {
             int n = scanner.nextInt();
             Segment[] segments = new Segment[n];
-            int maxCoordinate = 0;
             for (int i = 0; i < n; i++) {
                 int l = scanner.nextInt();
                 int r = scanner.nextInt();
-                maxCoordinate = Math.max(maxCoordinate, r);
                 segments[i] = new Segment(l, r);
             }
-            solve(segments, maxCoordinate);
+            solve(segments);
         }
     }
 
@@ -28,7 +23,10 @@ public class SegmentSubset {
 
     static List<Segment>[] segmentsFromLeft;
 
-    public static void solve(Segment[] segments, int maxCoordinate) {
+    public static void solve(Segment[] segments) {
+
+        // resize [segments] and get it's max coordinate
+        int maxCoordinate = compress(segments);
 
         segmem = new int[maxCoordinate+1][maxCoordinate+1];
 
@@ -49,9 +47,34 @@ public class SegmentSubset {
         System.out.println(maximumSubset);
     }
 
+    public static int compress(Segment[] segments){
+
+        // record all end points
+        Set<Integer> endPoints = new TreeSet<>();
+        for(Segment segment: segments){
+            endPoints.add(segment.l);
+            endPoints.add(segment.r);
+        }
+
+        // make a smaller map for the end points
+        int index = 0;
+        Map<Integer, Integer> compressMap = new HashMap<>();
+        for (int endpoint : endPoints){
+            compressMap.put(endpoint,index++);
+        }
+
+        // remap end points on [Segment] objects
+        for(Segment segment: segments){
+            segment.l = compressMap.get(segment.l);
+            segment.r = compressMap.get(segment.r);
+        }
+
+        return index;
+    }
+
     public static int maximumSubset(int l, int r) {
-        if(segmem[l][r] != -1) return segmem[l][r];
         if(l > r) return 0;
+        if(segmem[l][r] != -1) return segmem[l][r];
 
         segmem[l][r] = 0;
 
