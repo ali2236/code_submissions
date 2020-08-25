@@ -1,3 +1,5 @@
+package hackerrank.algorithms.recursion;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -19,7 +21,7 @@ class Result {
      */
 
     public static String passwordCracker(List<String> passwords, String loginAttempt) {
-        List<String> result = findCombination(loginAttempt, new LinkedList<String>(), passwords);
+        List<String> result = findCombination(loginAttempt, new LinkedList<>(), passwords);
         if (result != null) {
             return concatList(result," ");
         }
