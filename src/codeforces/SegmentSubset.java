@@ -5,13 +5,9 @@ import java.util.*;
 public class SegmentSubset {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner("1\n" + "4\n" +
-                "1 5\n" +
-                "2 4\n" +
-                "2 3\n" +
-                "3 4");
+        Scanner scanner = new Scanner(System.in);
         int t = scanner.nextInt();
-        while (t-- > 0) {
+        while (t-->0) {
             int n = scanner.nextInt();
             Segment[] segments = new Segment[n];
             for (int i = 0; i < n; i++) {
