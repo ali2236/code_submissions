@@ -66,8 +66,3 @@ public class PairOfTopics {
     }
 
 }
-        /*for (int i = 0; i < n; i++) {
-            if(f[i]<=0) continue;
-            int pos = lowerBound(f,-f[i]+1);
-            pairs += i - pos;
-        }*/
