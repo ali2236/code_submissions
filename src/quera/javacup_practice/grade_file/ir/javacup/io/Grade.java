@@ -1,10 +1,10 @@
 package quera.javacup_practice.grade_file.ir.javacup.io;
 
-public class Grade { // 15
+public class Grade {
 
-	private String studentId; //9 -> 72
-	private int courseCode; // 2 -> 32
-	private double score; // 4 -> 64
+	private String studentId;
+	private int courseCode;
+	private double score;
 
 	public String getStudentId() {
 		return studentId;
