@@ -1,13 +1,14 @@
-import java.util.BitSet;
-
 public class test {
     public static void main(String[] args) {
-        int[] nums = {1, 2, 4, 6, 3, 7, 8};
-        int[] nums2 = {1, 2, 3, 5};
-        BitSet bitSet = new BitSet(nums2.length + 1);
-        for(int num : nums2){
-            bitSet.set(num - 1);
+        int solution = 1;
+        for (int i = 1; i < 256; i++) {
+            for (int j = 1; j < 256; j++) {
+                for (int k = 1; k < 256; k++) {
+                    if(((i*j*k) + (i*j) + i)==2_000_000){
+                        System.out.println((solution++)+": i=" +i+" j="+j+" k="+k);
+                    }
+                }
+            }
         }
-        System.out.println(bitSet.nextClearBit(0) - 1);
     }
 }

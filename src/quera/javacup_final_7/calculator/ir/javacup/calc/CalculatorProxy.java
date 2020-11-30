@@ -18,7 +18,12 @@ public class CalculatorProxy implements Calculable {
 
     @Override
     public BigDecimal doOperation(BigDecimal... operands) {
-        String key = Arrays.stream(operands).mapToInt(BigDecimal::hashCode).mapToObj(Integer::toString).collect(Collectors.joining());
+
+        String key = Arrays.stream(operands)
+                .mapToInt(BigDecimal::hashCode)
+                .mapToObj(Integer::toString)
+                .collect(Collectors.joining());
+
         if (cache.containsKey(key)) {
             return cache.get(key);
         } else {
