@@ -1,4 +1,4 @@
-package icpc.c98_online;
+//package icpc.c98_online;
 
 import java.util.Scanner;
 

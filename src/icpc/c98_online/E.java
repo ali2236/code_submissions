@@ -19,17 +19,17 @@ public class E {
         for (int col = 0; col < m; col++) {
             for (int moves = 0; moves < n; moves++) {
                 // check right for left
-                try {
+                if (col + moves < m) {
                     if (park[moves].charAt(col + moves) == 'L') meets[col]++;
-                } catch (Exception ignored) { }
+                }
                 // check left for right
-                try {
+                if (col - moves >= 0) {
                     if (park[moves].charAt(col - moves) == 'R') meets[col]++;
-                } catch (Exception ignored) { }
+                }
                 // check down for top
-                try {
+                if (moves + moves < n) {
                     if (park[moves + moves].charAt(col) == 'U') meets[col]++;
-                } catch (Exception ignored) { }
+                }
             }
         }
         System.out.println(IntStream.of(meets).mapToObj(Integer::toString).collect(Collectors.joining(" ")));
